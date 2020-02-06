@@ -1,0 +1,32 @@
+# collection of exports used to simplify the cooperation of many robots in one ros network
+
+# determine the namespace by using the local ip
+IP_="$(ip route get 1 | awk '{print $NF;exit}')"
+
+# ip pool
+NS_="none"
+
+if [ ${IP_} == "192.168.0.51" -o ${IP_} == "192.168.0.52" -o ${IP_} == "192.168.0.53" ]
+then
+  NS_="hutmat"
+elif [ ${IP_} == "192.168.0.54" -o ${IP_} == "192.168.0.55" -o ${IP_} == "192.168.0.56" ]
+then
+  NS_="flegro"
+elif [ ${IP_} == "192.168.0.57" -o ${IP_} == "192.168.0.58" -o ${IP_} == "192.168.0.59" ]
+then
+  NS_="denmen"
+elif [ ${IP_} == "192.168.0.a" -o ${IP_} == "192.168.0.b" -o ${IP_} == "192.168.0.c" ] # TODO: add correct ips
+then
+  NS_="bauwen"
+elif [ ${IP_} == "192.168.0.x" -o ${IP_} == "192.168.0.y" -o ${IP_} == "192.168.0.z" ] # TODO: add correct ips
+then
+  NS_="rhosta"
+fi
+
+export TURTLEBOT3_MODEL=burger
+export ROS_DISTRO=kinetic
+export ROS_HOSTNAME=${IP_}
+export ROS_NAMESPACE=${NS_}
+export ROS_MASTER_URI=http://${ROS_MASTER}:11311
+export COOP_SEARCHING_TOPIC="/coop_tag/searching"
+export COOP_REACHED_TOPIC="/coop_tag/reached"
