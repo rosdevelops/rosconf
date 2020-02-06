@@ -15,7 +15,7 @@ then
 elif [ ${IP_} == "192.168.0.57" -o ${IP_} == "192.168.0.58" -o ${IP_} == "192.168.0.59" ]
 then
   NS_="denmen"
-elif [ ${IP_} == "192.168.0.a" -o ${IP_} == "192.168.0.b" -o ${IP_} == "192.168.0.c" ] # TODO: add correct ips
+elif [ ${IP_} == "192.168.0.100" -o ${IP_} == "192.168.0.68" ]
 then
   NS_="bauwen"
 elif [ ${IP_} == "192.168.0.x" -o ${IP_} == "192.168.0.y" -o ${IP_} == "192.168.0.z" ] # TODO: add correct ips
